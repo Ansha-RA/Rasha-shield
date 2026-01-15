@@ -28,7 +28,7 @@ async function checkWebsite() {
     "verify-login", "confirm-password", "validate-password", "security-password", "password-update", "account-password", "login-password",
     "secure-password", "verify-password", "fizzleplop", "bananacircuit", "zorblaxonline", "neonkoalacode.io",
 
-    "muffinreboot.tech", "quasarmelon", "grumbleverse.biz", "wigglytiger.xyz", "snorkelhub.fake", "toastrocket.lol"
+    "muffinreboot.tech", "quasarmelon", "grumbleverse.biz", "wigglytiger.xyz", 
 
 
 
