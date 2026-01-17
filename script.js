@@ -9,38 +9,33 @@ async function checkWebsite() {
     return;
   }
 
-  // --- NEW: DASH-STUFFING HEURISTIC ---
-  // We use a try-catch block because 'new URL()' fails if the protocol (http/https) is missing.
   let containsManyDashes = false;
   try {
-    // 1. Normalize the URL (add https if missing just for parsing purposes)
     let urlToParse = urlInput;
     if (!/^https?:\/\//i.test(urlToParse)) {
         urlToParse = 'https://' + urlToParse;
     }
     
-    // 2. Extract the Hostname (e.g., "secure-login-paypal.com")
+
     const hostname = new URL(urlToParse).hostname;
 
-    // 3. Count dashes only in the hostname
     const dashCount = (hostname.match(/-/g) || []).length;
 
-    // 4. Logic: If > 2 dashes, it's likely a scam (e.g., "secure-amazon-login-update.com")
+    
     if (dashCount > 2) {
         containsManyDashes = true;
     }
   } catch (e) {
-    // If URL is invalid, we proceed to other checks or flag it
+    
     console.log("Could not parse hostname for dash checking");
   }
 
   if (containsManyDashes) {
     resultDiv.textContent = "⚠️ Suspicious! The domain contains excessive dashes (Dash-Stuffing).";
     resultDiv.className = "result fake";
-    return; // Stop here, no need to call API
+    return; 
   }
-  // --------------------------------------
-
+  
 
   // Custom pattern detection (cleaned up to remove duplicates)
   const suspiciousPatterns = [
