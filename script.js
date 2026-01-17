@@ -9,6 +9,34 @@ async function checkWebsite() {
     return;
   }
 
+  let containsManyDashes = false;
+  try {
+    let urlToParse = urlInput;
+    if (!/^https?:\/\//i.test(urlToParse)) {
+        urlToParse = 'https://' + urlToParse;
+    }
+    
+
+    const hostname = new URL(urlToParse).hostname;
+
+    const dashCount = (hostname.match(/-/g) || []).length;
+
+    
+    if (dashCount > 2) {
+        containsManyDashes = true;
+    }
+  } catch (e) {
+    
+    console.log("Could not parse hostname for dash checking");
+  }
+
+  if (containsManyDashes) {
+    resultDiv.textContent = "⚠️ Suspicious! The domain contains excessive dashes (Dash-Stuffing).";
+    resultDiv.className = "result fake";
+    return; 
+  }
+  
+
   // Custom pattern detection (cleaned up to remove duplicates)
   const suspiciousPatterns = [
     "paypa1", "paypai", "bit.ly", "tinyurl", "secure-", "update-info", "account", "login", "signin", "banking",
