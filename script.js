@@ -49,9 +49,6 @@ async function checkWebsite() {
 
     "muffinreboot.tech", "quasarmelon", "grumbleverse.biz", "wigglytiger.xyz",
 
-
-
-
   ];
 
   const isSuspicious = suspiciousPatterns.some(pattern =>
