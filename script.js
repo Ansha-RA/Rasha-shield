@@ -8,34 +8,25 @@ async function checkWebsite() {
     resultDiv.className = "result warning";
     return;
   }
-
   let containsManyDashes = false;
   try {
-    let urlToParse = urlInput;
+    let urlToParse = url;
     if (!/^https?:\/\//i.test(urlToParse)) {
-        urlToParse = 'https://' + urlToParse;
+      urlToParse = 'https://' + urlToParse;
     }
-    
-
     const hostname = new URL(urlToParse).hostname;
-
     const dashCount = (hostname.match(/-/g) || []).length;
-
-    
     if (dashCount > 2) {
-        containsManyDashes = true;
+      containsManyDashes = true;
     }
   } catch (e) {
-    
     console.log("Could not parse hostname for dash checking");
   }
-
   if (containsManyDashes) {
     resultDiv.textContent = "⚠️ Suspicious! The domain contains excessive dashes (Dash-Stuffing).";
     resultDiv.className = "result fake";
-    return; 
+    return;
   }
-  
 
   // Custom pattern detection (cleaned up to remove duplicates)
   const suspiciousPatterns = [
@@ -56,7 +47,7 @@ async function checkWebsite() {
     "verify-login", "confirm-password", "validate-password", "security-password", "password-update", "account-password", "login-password",
     "secure-password", "verify-password", "fizzleplop", "bananacircuit", "zorblaxonline", "neonkoalacode.io",
 
-    "muffinreboot.tech", "quasarmelon", "grumbleverse.biz", "wigglytiger.xyz", 
+    "muffinreboot.tech", "quasarmelon", "grumbleverse.biz", "wigglytiger.xyz",
 
 
 
@@ -67,7 +58,6 @@ async function checkWebsite() {
     url.toLowerCase().includes(pattern)
   );
 
-
   if (isSuspicious) {
     resultDiv.textContent =
       "⚠️ Suspicious website detected based on URL pattern!";
@@ -76,7 +66,7 @@ async function checkWebsite() {
   }
 
   // Google Safe Browsing API check
- 
+
   const apiKey = "YOUR_API_KEY";
   const apiUrl = `https://safebrowsing.googleapis.com/v4/threatMatches:find?key=${apiKey}`;
 
