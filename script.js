@@ -10,6 +10,8 @@ async function checkWebsite() {
   }
   let containsManyDashes = false;
   let hasNonStandardPort = false;
+  let containLongSubdomain = false;
+
   try {
     let urlToParse = url;
     if (!/^https?:\/\//i.test(urlToParse)) {
@@ -25,6 +27,14 @@ async function checkWebsite() {
     if (port && port !== '80' && port !== '443') {
       hasNonStandardPort = true;
     }
+    const parts = hostname.split('.');
+    if (parts.length > 2) {
+      const subdomain = parts.slice(0, parts.length - 2).join('.');
+      if (subdomain.length > 20) {
+        containLongSubdomain = true;
+      }
+    }
+
   } catch (e) {
     console.log("Could not parse URL for heuristics");
   }
@@ -35,6 +45,11 @@ async function checkWebsite() {
   }
   if (hasNonStandardPort) {
     resultDiv.textContent = "⚠️ Suspicious! The URL uses a non-standard port (often used by compromised servers).";
+    resultDiv.className = "result fake";
+    return;
+  }
+  if (containLongSubdomain) {
+    resultDiv.textContent = "⚠️ Suspicious! The subdomain is unusually long (often used to hide the real domain on mobile).";
     resultDiv.className = "result fake";
     return;
   }
