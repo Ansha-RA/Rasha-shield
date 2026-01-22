@@ -9,25 +9,35 @@ async function checkWebsite() {
     return;
   }
   let containsManyDashes = false;
+  let hasNonStandardPort = false;
   try {
     let urlToParse = url;
     if (!/^https?:\/\//i.test(urlToParse)) {
       urlToParse = 'https://' + urlToParse;
     }
-    const hostname = new URL(urlToParse).hostname;
+    const parsedUrl = new URL(urlToParse);
+    const hostname = parsedUrl.hostname;
+    const port = parsedUrl.port; 
     const dashCount = (hostname.match(/-/g) || []).length;
     if (dashCount > 2) {
       containsManyDashes = true;
     }
+    if (port && port !== '80' && port !== '443') {
+      hasNonStandardPort = true;
+    }
   } catch (e) {
-    console.log("Could not parse hostname for dash checking");
+    console.log("Could not parse URL for heuristics");
   }
   if (containsManyDashes) {
     resultDiv.textContent = "⚠️ Suspicious! The domain contains excessive dashes (Dash-Stuffing).";
     resultDiv.className = "result fake";
     return;
   }
-
+  if (hasNonStandardPort) {
+    resultDiv.textContent = "⚠️ Suspicious! The URL uses a non-standard port (often used by compromised servers).";
+    resultDiv.className = "result fake";
+    return;
+  }
   // Custom pattern detection (cleaned up to remove duplicates)
   const suspiciousPatterns = [
     "paypa1", "paypai", "bit.ly", "tinyurl", "secure-", "update-info", "account", "login", "signin", "banking",
@@ -45,28 +55,20 @@ async function checkWebsite() {
     "account-security", "secure-update", "password-reset", "account-verify", "login-update", "secure-login", "verify-account",
     "update-account", "confirm-login", "validate-account", "security-update", "account-alert", "login-security", "update-login",
     "verify-login", "confirm-password", "validate-password", "security-password", "password-update", "account-password", "login-password",
-    "secure-password", "verify-password", "fizzleplop", "bananacircuit", "zorblaxonline", "neonkoalacode.io",
-
-    "muffinreboot.tech", "quasarmelon", "grumbleverse.biz", "wigglytiger.xyz",
-
+    "secure-password", "verify-password", "fizzleplop", "bananacircuit", "zorblaxonline", "neonkoalacode.io","muffinreboot.tech", "quasarmelon", "grumbleverse.biz", "wigglytiger.xyz",
   ];
-
   const isSuspicious = suspiciousPatterns.some(pattern =>
     url.toLowerCase().includes(pattern)
   );
-
   if (isSuspicious) {
     resultDiv.textContent =
       "⚠️ Suspicious website detected based on URL pattern!";
     resultDiv.className = "result fake";
     return;
   }
-
   // Google Safe Browsing API check
-
   const apiKey = "YOUR_API_KEY";
   const apiUrl = `https://safebrowsing.googleapis.com/v4/threatMatches:find?key=${apiKey}`;
-
   const body = {
     client: {
       clientId: "rashashield",
@@ -84,7 +86,6 @@ async function checkWebsite() {
       threatEntries: [{ url: url }]
     }
   };
-
   try {
     const response = await fetch(apiUrl, {
       method: "POST",
@@ -93,9 +94,7 @@ async function checkWebsite() {
         "Content-Type": "application/json"
       }
     });
-
     const data = await response.json();
-
     if (data && data.matches) {
       resultDiv.textContent = "⚠️ Warning! This website is unsafe.";
       resultDiv.className = "result fake";
