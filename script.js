@@ -21,13 +21,14 @@ async function checkWebsite() {
     const hostname = parsedUrl.hostname;
     const port = parsedUrl.port; 
     const dashCount = (hostname.match(/-/g) || []).length;
+    const parts = hostname.split('.');
+    
     if (dashCount > 2) {
       containsManyDashes = true;
     }
     if (port && port !== '80' && port !== '443') {
       hasNonStandardPort = true;
     }
-    const parts = hostname.split('.');
     if (parts.length > 2) {
       const subdomain = parts.slice(0, parts.length - 2).join('.');
       if (subdomain.length > 20) {
