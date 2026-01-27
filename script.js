@@ -11,6 +11,7 @@ async function checkWebsite() {
   let containsManyDashes = false;
   let hasNonStandardPort = false;
   let containLongSubdomain = false;
+  let IsExcessiveEncoding = false;
 
   try {
     let urlToParse = url;
@@ -22,6 +23,7 @@ async function checkWebsite() {
     const port = parsedUrl.port; 
     const dashCount = (hostname.match(/-/g) || []).length;
     const parts = hostname.split('.');
+    const encodedCount = (urlToParse.match(/%/g) || []).length;
     
     if (dashCount > 2) {
       containsManyDashes = true;
@@ -35,6 +37,10 @@ async function checkWebsite() {
         containLongSubdomain = true;
       }
     }
+   if (urlToParse.length > 0 && (encodedCount / urlToParse.length) > 0.05) {
+      IsExcessiveEncoding = true;
+    }
+
 
   } catch (e) {
     console.log("Could not parse URL for heuristics");
@@ -54,6 +60,12 @@ async function checkWebsite() {
     resultDiv.className = "result fake";
     return;
   }
+   if (IsExcessiveEncoding) {
+    resultDiv.textContent = "⚠️ Suspicious! The URL uses excessive encoding (%) to hide its destination.";
+    resultDiv.className = "result fake";
+    return;
+  }
+
   // Custom pattern detection (cleaned up to remove duplicates)
   const suspiciousPatterns = [
     "paypa1", "paypai", "bit.ly", "tinyurl", "secure-", "update-info", "account", "login", "signin", "banking",
