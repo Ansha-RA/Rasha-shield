@@ -12,6 +12,7 @@ async function checkWebsite() {
   let hasNonStandardPort = false;
   let containLongSubdomain = false;
   let IsExcessiveEncoding = false;
+  let hasRiskyTLD = false;
 
   try {
     let urlToParse = url;
@@ -24,6 +25,7 @@ async function checkWebsite() {
     const dashCount = (hostname.match(/-/g) || []).length;
     const parts = hostname.split('.');
     const encodedCount = (urlToParse.match(/%/g) || []).length;
+    const riskyTLDs = ['.xyz', '.top', '.club', '.info', '.zip', '.mov', '.gq', '.tk', '.ml'];
     
     if (dashCount > 2) {
       containsManyDashes = true;
@@ -40,6 +42,10 @@ async function checkWebsite() {
    if (urlToParse.length > 0 && (encodedCount / urlToParse.length) > 0.05) {
       IsExcessiveEncoding = true;
     }
+  if (riskyTLDs.some(tld => hostname.endsWith(tld))) {
+        hasRiskyTLD = true;
+    }
+
 
 
   } catch (e) {
@@ -65,6 +71,12 @@ async function checkWebsite() {
     resultDiv.className = "result fake";
     return;
   }
+   if (hasRiskyTLD) {
+    resultDiv.textContent = "⚠️ Suspicious! This Top-Level Domain (TLD) is frequently associated with scams.";
+    resultDiv.className = "result fake";
+    return;
+  }
+
 
   // Custom pattern detection (cleaned up to remove duplicates)
   const suspiciousPatterns = [
