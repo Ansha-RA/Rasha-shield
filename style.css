@@ -1,4 +1,4 @@
-/* General Reset and Base Styles */
+
 body {
   margin: 0;
   padding: 0;
@@ -8,7 +8,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Header */
+
 header {
   background: linear-gradient(135deg, #a18cd1, #fbc2eb);
   color: #fff;
@@ -55,7 +55,7 @@ header {
   transform: scale(1.05);
 }
 
-/* Hero Section */
+
 .hero-section {
   background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
   color: #fff;
@@ -92,7 +92,7 @@ header {
   transform: translateY(-3px);
 }
 
-/* Animations */
+
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -103,7 +103,7 @@ header {
   100% { opacity: 1; transform: scale(1); }
 }
 
-/* Sections */
+
 section {
   padding: 60px 20px;
   text-align: center;
@@ -138,7 +138,7 @@ ul {
   padding: 0;
 }
 
-/* Form & Input */
+
 input {
   padding: 12px;
   width: 60%;
@@ -164,7 +164,6 @@ button:hover {
   background-color: #a061e6;
 }
 
-/* Result Styling */
 .result {
   margin-top: 30px;
   padding: 15px 25px;
@@ -189,7 +188,7 @@ button:hover {
   color: #856404;
 }
 
-/* Footer */
+
 footer {
   background: linear-gradient(to right, #a1c4fd, #c2e9fb);
   color: #333;
@@ -198,7 +197,7 @@ footer {
   font-weight: 500;
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
   .nav-links {
     flex-direction: column;
@@ -216,7 +215,7 @@ footer {
   align-items: center;
   gap: 10px;
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(45deg, #0c091b, #7873f5); /* hex-based gradient */
+  background: linear-gradient(45deg, #0c091b, #7873f5);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: logoFade 1s ease-out;
@@ -281,5 +280,4 @@ footer {
     transform: scale(1);
   }
 }
-
 

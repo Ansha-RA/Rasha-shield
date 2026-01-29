@@ -13,6 +13,7 @@ async function checkWebsite() {
   let containLongSubdomain = false;
   let IsExcessiveEncoding = false;
   let hasRiskyTLD = false;
+  const riskyTLDs = ['.xyz', '.top', '.club', '.info', '.zip', '.mov', '.gq', '.tk', '.ml'];
 
   try {
     let urlToParse = url;
@@ -21,12 +22,11 @@ async function checkWebsite() {
     }
     const parsedUrl = new URL(urlToParse);
     const hostname = parsedUrl.hostname;
-    const port = parsedUrl.port; 
+    const port = parsedUrl.port;
     const dashCount = (hostname.match(/-/g) || []).length;
     const parts = hostname.split('.');
     const encodedCount = (urlToParse.match(/%/g) || []).length;
-    const riskyTLDs = ['.xyz', '.top', '.club', '.info', '.zip', '.mov', '.gq', '.tk', '.ml'];
-    
+  
     if (dashCount > 2) {
       containsManyDashes = true;
     }
@@ -39,14 +39,12 @@ async function checkWebsite() {
         containLongSubdomain = true;
       }
     }
-   if (urlToParse.length > 0 && (encodedCount / urlToParse.length) > 0.05) {
+    if (urlToParse.length > 0 && (encodedCount / urlToParse.length) > 0.05) {
       IsExcessiveEncoding = true;
     }
-  if (riskyTLDs.some(tld => hostname.endsWith(tld))) {
-        hasRiskyTLD = true;
+    if (riskyTLDs.some(tld => hostname.endsWith(tld))) {
+      hasRiskyTLD = true;
     }
-
-
 
   } catch (e) {
     console.log("Could not parse URL for heuristics");
@@ -66,17 +64,16 @@ async function checkWebsite() {
     resultDiv.className = "result fake";
     return;
   }
-   if (IsExcessiveEncoding) {
+  if (IsExcessiveEncoding) {
     resultDiv.textContent = "⚠️ Suspicious! The URL uses excessive encoding (%) to hide its destination.";
     resultDiv.className = "result fake";
     return;
   }
-   if (hasRiskyTLD) {
+  if (hasRiskyTLD) {
     resultDiv.textContent = "⚠️ Suspicious! This Top-Level Domain (TLD) is frequently associated with scams.";
     resultDiv.className = "result fake";
     return;
   }
-
 
   // Custom pattern detection (cleaned up to remove duplicates)
   const suspiciousPatterns = [
@@ -95,8 +92,9 @@ async function checkWebsite() {
     "account-security", "secure-update", "password-reset", "account-verify", "login-update", "secure-login", "verify-account",
     "update-account", "confirm-login", "validate-account", "security-update", "account-alert", "login-security", "update-login",
     "verify-login", "confirm-password", "validate-password", "security-password", "password-update", "account-password", "login-password",
-    "secure-password", "verify-password", "fizzleplop", "bananacircuit", "zorblaxonline", "neonkoalacode.io","muffinreboot.tech", "quasarmelon", "grumbleverse.biz", "wigglytiger.xyz",
+    "secure-password", "verify-password", "fizzleplop", "bananacircuit", "zorblaxonline", "neonkoalacode.io", "muffinreboot.tech", "quasarmelon", "grumbleverse.biz", "wigglytiger.xyz",
   ];
+  
   const isSuspicious = suspiciousPatterns.some(pattern =>
     url.toLowerCase().includes(pattern)
   );
