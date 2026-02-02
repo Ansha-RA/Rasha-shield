@@ -58,7 +58,7 @@ header {
   background: radial-gradient(circle at top, #020617, #020617);
   color: #ffffff;
   padding: 90px 20px;
-  height: 60vh;
+  height: 50vh;
   text-align: center;
   animation: fadeIn 1s ease-in-out;
 }
@@ -90,21 +90,76 @@ section {
   padding: 70px 20px;
   text-align: center;
 }
+.about-section {
+  background: #020617;
+  max-width: 1100px;
+  margin: auto;
+  padding: 80px 20px;
+}
+.about-section > p {
+  max-width: 900px;
+  margin: 0 auto 30px;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #cbd5f5;
+}
+.about-section ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap:25px;
+  margin-top: 40px;
+}
+.about-section li {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid #1e293b;
+  border-radius: 16px;
+  padding: 22px 24px;
+  text-align: left;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  transition: 0.3s ease;
+}
+.about-section li:hover {
+  transform: translateY(-6px);
+  border-color: #38bdf8;
+  box-shadow: 0 20px 45px rgba(56,189,248,0.15);
+}
+.about-section li strong {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #38bdf8;
+}
+.about-section code {
+  background: rgba(56,189,248,0.15);
+  color: #7dd3fc;
+  padding: 3px 6px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+@media (max-width: 768px) {
+  .about-section {
+    padding: 60px 16px;
+  }
+
+  .about-section li {
+    font-size: 16px;
+  }
+}
 .about-section,
 .how-it-works-section,
-.features-section,
 .check-section {
   background-color: #020617;
 }
-h2 {
-  font-size: 32px;
+h2 
+{ font-size: 32px;
   margin-bottom: 20px;
   color: #38bdf8;
-}
-p, li {
+ }
+ p, li 
+ {
   font-size: 18px;
   line-height: 1.7;
-  color: #94a3b8;
+  color: #94a3b8; 
 }
 input {
   padding: 14px;
