@@ -2,7 +2,7 @@ async function checkWebsite() {
   const url = document.getElementById("url-input").value.trim();
   const resultDiv = document.getElementById("result");
   resultDiv.innerHTML = "Checking...";
-
+  
   if (!url) {
     resultDiv.textContent = "Please enter a URL.";
     resultDiv.className = "result warning";
@@ -26,7 +26,7 @@ async function checkWebsite() {
     const dashCount = (hostname.match(/-/g) || []).length;
     const parts = hostname.split('.');
     const encodedCount = (urlToParse.match(/%/g) || []).length;
-  
+
     if (dashCount > 2) {
       containsManyDashes = true;
     }
@@ -74,8 +74,6 @@ async function checkWebsite() {
     resultDiv.className = "result fake";
     return;
   }
-
-  // Custom pattern detection (cleaned up to remove duplicates)
   const suspiciousPatterns = [
     "paypa1", "paypai", "bit.ly", "tinyurl", "secure-", "update-info", "account", "login", "signin", "banking",
     "verify", "paypal", "appleid", "reset-password", "security-check", "g00gle", "faceb00k", "facebo0k", "amaz0n", "dropbox-secure",
@@ -94,7 +92,6 @@ async function checkWebsite() {
     "verify-login", "confirm-password", "validate-password", "security-password", "password-update", "account-password", "login-password",
     "secure-password", "verify-password", "fizzleplop", "bananacircuit", "zorblaxonline", "neonkoalacode.io", "muffinreboot.tech", "quasarmelon", "grumbleverse.biz", "wigglytiger.xyz",
   ];
-  
   const isSuspicious = suspiciousPatterns.some(pattern =>
     url.toLowerCase().includes(pattern)
   );
@@ -104,7 +101,6 @@ async function checkWebsite() {
     resultDiv.className = "result fake";
     return;
   }
-  // Google Safe Browsing API check
   const apiKey = "YOUR_API_KEY";
   const apiUrl = `https://safebrowsing.googleapis.com/v4/threatMatches:find?key=${apiKey}`;
   const body = {
