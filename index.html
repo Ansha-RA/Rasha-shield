@@ -43,38 +43,32 @@ We use a mix of smart pattern detection and official security databases to check
       <strong>🔎 Typosquatting Detection:</strong>
       Identifies look-alike attacks such as <em>netfl1x</em> or <em>amaz0n</em>.
     </li>
-
     <li>
       <strong>➖ Dash-Stuffing Analysis:</strong>
       Flags domains overloaded with hyphens designed to mimic real URLs.
     </li>
-
     <li>
       <strong>📏 Suspicious Subdomain Length:</strong>
       Detects long subdomains that hide malicious domains on mobile screens.
     </li>
-
     <li>
       <strong>🔐 URL Obfuscation Checks:</strong>
       Analyzes encoded characters and unusual ports used to bypass firewalls.
     </li>
-
     <li>
       <strong>⚠️ High-Risk TLD Filtering:</strong>
       Flags risky extensions like <code>.xyz</code>, <code>.top</code>, and <code>.zip</code>.
     </li>
-
     <li>
       <strong>🌐 Google Safe Browsing Integration:</strong>
       Cross-checks URLs against Google’s real-time global threat database.
     </li>
   </ul>
-
   <section id="check" class="check-section">
-    <h2>Fake Website Detection Tool</h2>
+    <h2>Phishing Detection Tool</h2>
     <p>Enter a website URL to verify its authenticity.</p>
     <div class="form-group">
-      <input type="text" id="url-input" placeholder="Enter website URL">
+      <input type="text" id="url-input" placeholder="Enter website URL to scan">
       <button onclick="checkWebsite()">Check</button>
     </div>
     <div id="result" class="result"></div>
