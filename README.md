@@ -9,11 +9,9 @@
 <p align="center">
   <a href="#overview">Overview</a> •
   <a href="#demo">Demo</a> •
-  <a href="#features">Features</a> •
+  <a href="#teck stack">Tech Stack</a> •
   <a href="#installation">Installation</a> •
-  <a href="#usage">Usage</a>
-  <a href="#teck stack">Tech Stack</a>
-
+  <a href="#usage">Usage</a> •
 </p>
 ## 📖 Overview
 
@@ -50,3 +48,56 @@ Not all Top-Level Domains carry the same trust level. Rasha Shield automatically
 
 **6️⃣ Google Safe Browsing Integration**  
 Beyond structural heuristics, Rasha Shield integrates with the **Google Safe Browsing API**, validating URLs against a real-time global database of known phishing, malware, and unwanted software threats.
+
+## 🎬 Demo
+
+### 🔹 URL Scan – Non Standard Port
+<p align="center">
+  <img src="assets/demo1.gif" width="800"/>
+</p>
+
+---
+
+### 🔹 URL Scan – Long Sub-Domain 
+<p align="center">
+  <img src="assets/demo2.gif" width="800"/>
+</p>
+
+---
+
+### 🔹 Dash-Stuffing Analysis
+<p align="center">
+  <img src="assets/demo.gif" width="800"/>
+</p>
+
+## 🛠 Tech Stack
+
+<p align="center">
+  <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white"/>
+  <img src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white"/>
+  <img src="https://img.shields.io/badge/javascript-%23F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black"/>
+  <img src="https://img.shields.io/badge/google%20safe%20browsing-4285F4?style=for-the-badge&logo=google&logoColor=white"/>
+  <img src="https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white"/>
+</p>
+
+## 🚀 Getting Started
+
+### 📌 Prerequisites
+
+To run this project locally, you only need a modern web browser.  
+If you plan to modify or contribute to the codebase, a code editor such as **VS Code** is recommended.
+
+---
+
+### ⚙️ Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Ansha-RA/Rasha-shield.git
+Navigate to the project directory
+
+cd Rasha-shield
+Open the application
+
+Open index.html in your preferred browser
+OR use the Live Server extension in VS Code for a real-time preview.
