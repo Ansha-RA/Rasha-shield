@@ -101,3 +101,16 @@ Open the application
 
 Open index.html in your preferred browser
 OR use the Live Server extension in VS Code for a real-time preview.
+
+## 📖 Usage
+
+1. **Enter a URL**  
+   Type or paste the website link you want to verify into the search bar.
+
+2. **Run Analysis**  
+   Click the **Check** button or press **Enter** to start the scan.
+
+3. **Review Results**  
+   The application instantly displays whether the website is safe or potentially a scam, based on:
+   - Structural analysis (typosquatting, TLD reputation, obfuscation)
+   - **Google Safe Browsing API** verification
