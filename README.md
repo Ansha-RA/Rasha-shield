@@ -9,9 +9,9 @@
 <p align="center">
   <a href="#overview">Overview</a> •
   <a href="#demo">Demo</a> •
-  <a href="#teck stack">Tech Stack</a> •
-  <a href="#installation">Installation</a> •
-  <a href="#usage">Usage</a> •
+  <a href="#tech-stack">Tech Stack</a> •
+  <a href="#getting-started">Getting Started</a>•
+  <a href="#usage">Usage</a> 
 </p>
 ## 📖 Overview
 
@@ -53,21 +53,21 @@ Beyond structural heuristics, Rasha Shield integrates with the **Google Safe Bro
 
 ### 🔹 URL Scan – Non Standard Port
 <p align="center">
-  <img src="assets/demo1.gif" width="800"/>
+  <img src="assets/demo.gif" width="800"/>
 </p>
 
 ---
 
-### 🔹 URL Scan – Long Sub-Domain 
+### 🔹 URL Scan – Legtimate Website 
 <p align="center">
-  <img src="assets/demo2.gif" width="800"/>
+  <img src="assets/demo3.gif" width="800"/>
 </p>
 
 ---
 
 ### 🔹 Dash-Stuffing Analysis
 <p align="center">
-  <img src="assets/demo.gif" width="800"/>
+  <img src="assets/demo2.gif" width="800"/>
 </p>
 
 ## 🛠 Tech Stack
@@ -94,10 +94,8 @@ If you plan to modify or contribute to the codebase, a code editor such as **VS 
 1. **Clone the repository**
    ```bash
    git clone https://github.com/Ansha-RA/Rasha-shield.git
-Navigate to the project directory
 
 cd Rasha-shield
-Open the application
 
 Open index.html in your preferred browser
 OR use the Live Server extension in VS Code for a real-time preview.
