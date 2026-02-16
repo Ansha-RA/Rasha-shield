@@ -116,7 +116,7 @@ cd Rasha-shield
 3. **Open the application:**
 Simply open `index.html` in your preferred browser, or use the **Live Server** extension in VS Code for a real-time preview.
 
-📖 Usage
+ ## 📖 Usage
 
 1. **Enter a URL:** Type or paste the link you wish to verify into the search bar.
 2. **Review Results:** The application will instantly display whether the website is a scam or not based on structural analysis (typos, TLD reputation, obfuscation) and the **Google Safe Browsing API** status.
