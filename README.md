@@ -11,7 +11,7 @@
   <a href="#demo">Demo</a> •
   <a href="#tech-stack">Tech Stack</a> •
   <a href="#getting-started">Getting Started</a>•
-  <a href="#usage">Usage</a> 
+  <a href="#usage">Usage</a>
 </p>
 ## 📖 Overview
 
@@ -58,7 +58,7 @@ Beyond structural heuristics, Rasha Shield integrates with the **Google Safe Bro
 
 ---
 
-### 🔹 URL Scan – Legtimate Website 
+### 🔹 URL Scan – Legtimate Website
 <p align="center">
   <img src="assets/demo3.gif" width="800"/>
 </p>
@@ -221,22 +221,18 @@ If you plan to modify or contribute, a code editor such as **VS Code** is recomm
 1. **Clone the repository**
 ```bash
 git clone https://github.com/Ansha-RA/Rasha-shield.git
-2. cd Rasha-shield
+```
 
-3. Open index.html in your preferred browser
-OR use the Live Server extension in VS Code for real-time preview.
+2. **Navigate to the project directory:**
+
+```
+cd Rasha-shield
+```
+
+3. **Open the application:**
+Simply open `index.html` in your preferred browser, or use the **Live Server** extension in VS Code for a real-time preview.
 
 📖 Usage
 
-Enter a URL
-Type or paste the website link you want to verify into the search bar.
-
-Run Analysis
-Click the Check button or press Enter to start the scan.
-
-Review Results
-The application instantly displays whether the website is safe or potentially a scam based on:
-
-Structural analysis (typosquatting, TLD reputation, obfuscation)
-
-Google Safe Browsing API verification
+1. **Enter a URL:** Type or paste the link you wish to verify into the search bar.
+2. **Review Results:** The application will instantly display whether the website is a scam or not based on structural analysis (typos, TLD reputation, obfuscation) and the **Google Safe Browsing API** status.
